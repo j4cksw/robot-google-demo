@@ -1,18 +1,21 @@
 *** Settings ***
 Library    Selenium2Library
 
-*** Variables ***
-${TESTING KEYWORD}    SPRINT3R
-
 *** Test cases ***
-Search Keyword Correctly
-    Open Google
-    Enter Keyword    ${TESTING KEYWORD}
-    Begin Search
-    Should See ${TESTING KEYWORD} In Search Result
-    Close Browser
+Search Keywords Correctly
+    [Template]    Search Keyword Correctly
+    SPRINT3R
+    GODZILLA
 
 *** Keywords ***
+Search Keyword Correctly
+    [Arguments]   ${testing keyword}
+    Open Google
+    Enter Keyword    ${testing keyword}
+    Begin Search
+    Should See ${testing keyword} In Search Result
+    Close Browser
+
 Open Google
     Open Browser    http://www.google.com
 
