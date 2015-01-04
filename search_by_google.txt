@@ -1,5 +1,7 @@
 *** Settings ***
 Library    Selenium2Library
+Test Setup    Open Google
+Test Teardown    Close Browser
 
 *** Test cases ***
 Search Keywords Correctly
@@ -10,11 +12,9 @@ Search Keywords Correctly
 *** Keywords ***
 Search Keyword Correctly
     [Arguments]   ${testing keyword}
-    Open Google
     Enter Keyword    ${testing keyword}
     Begin Search
     Should See ${testing keyword} In Search Result
-    Close Browser
 
 Open Google
     Open Browser    http://www.google.com
