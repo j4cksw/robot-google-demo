@@ -1,0 +1,24 @@
+*** Settings ***
+Library    Selenium2Library
+
+*** Test cases ***
+Search Keyword Correctly
+    Open Google
+    Enter Keyword    SPRINT3R
+    Begin Search
+    Should See SPRINT3R In Search Result
+    Close Browser
+
+*** Keywords ***
+Open Google
+    Open Browser    http://www.google.com
+
+Enter Keyword
+    [Arguments]    ${keyword}
+    Input text    gbqfq    ${keyword}
+
+Begin Search
+    Click Button    gbqfb
+
+Should See ${keyword} In Search Result
+    Wait Until Page Contains    ${keyword}
